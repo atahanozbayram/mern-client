@@ -1,11 +1,17 @@
 {
-  "name": "mern-todolist-client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Atahan Ozbayram",
-  "license": "UNLICENSED"
+	"name": "mern-todolist-client",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Atahan Ozbayram",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"eslint": "^7.18.0",
+		"eslint-config-prettier": "^7.2.0",
+		"eslint-plugin-react": "^7.22.0",
+		"prettier": "2.2.1"
+	}
 }
