@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const port = process.env.PORT || 1234;
 
 module.exports = {
@@ -52,7 +53,7 @@ module.exports = {
 		alias: {},
 	},
 	optimization: {},
-	plugins: [],
+	plugins: [new webpack.HotModuleReplacementPlugin()],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'public/'),
 		publicPath: '/assets/',
