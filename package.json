@@ -9,9 +9,27 @@
 	"author": "Atahan Ozbayram",
 	"license": "UNLICENSED",
 	"devDependencies": {
+		"@babel/cli": "^7.12.10",
+		"@babel/core": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
+		"@babel/preset-react": "^7.12.10",
+		"babel": "^6.23.0",
+		"babel-loader": "^8.2.2",
+		"css-loader": "^5.0.1",
 		"eslint": "^7.18.0",
 		"eslint-config-prettier": "^7.2.0",
 		"eslint-plugin-react": "^7.22.0",
-		"prettier": "2.2.1"
+		"file-loader": "^6.2.0",
+		"prettier": "2.2.1",
+		"react-hot-loader": "^4.13.0",
+		"style-loader": "^2.0.0",
+		"webpack": "^5.16.0",
+		"webpack-cli": "^4.4.0",
+		"webpack-dev-server": "^3.11.2"
+	},
+	"dependencies": {
+		"@babel/polyfill": "^7.12.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1"
 	}
 }
