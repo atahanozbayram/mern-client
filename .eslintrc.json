@@ -1,6 +1,7 @@
 {
 	"env": {
 		"browser": true,
+		"node": true,
 		"es2021": true
 	},
 	"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
@@ -12,5 +13,7 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react"],
-	"rules": {}
+	"rules": {
+		"no-unused-vars": "warn"
+	}
 }
