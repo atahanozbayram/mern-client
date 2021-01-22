@@ -50,7 +50,10 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.msj', '.js', '.json'],
-		alias: {},
+		alias: {
+			'@root': path.resolve(__dirname, 'src'),
+			'@components': path.resolve(__dirname, 'src/components'),
+		},
 	},
 	optimization: {},
 	plugins: [new webpack.HotModuleReplacementPlugin()],
