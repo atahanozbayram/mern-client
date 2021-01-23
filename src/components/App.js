@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import LoginPage from '@root/pages/login';
+import { LoginPage } from '@root/pages/login';
 
 const App = function () {
 	return (
