@@ -1,6 +1,7 @@
 require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const port = process.env.PORT || 1234;
 
 module.exports = {
@@ -57,7 +58,12 @@ module.exports = {
 		},
 	},
 	optimization: {},
-	plugins: [new webpack.HotModuleReplacementPlugin()],
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new Dotenv({
+			systemvars: true,
+		}),
+	],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'public/'),
 		publicPath: '/assets/',
