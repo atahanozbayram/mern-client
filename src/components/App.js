@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { LoginPage } from '@root/pages/login';
+import { PrivateRoute } from '@components/PrivateRoute';
 
 const App = function () {
 	return (
@@ -10,7 +11,9 @@ const App = function () {
 					<LoginPage />
 				</Route>
 				<Route path="/register"></Route>
-				<Route path="/todo"></Route>
+				<PrivateRoute>
+					<Route path="/todo"></Route>
+				</PrivateRoute>
 				<Route path="/"></Route>
 			</Switch>
 		</Router>
