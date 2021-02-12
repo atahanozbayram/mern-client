@@ -75,6 +75,21 @@ const TodoPage = function (props) {
 			});
 	};
 
+	const todoDeleteCb = function (id) {
+		axiosInstance({
+			method: 'POST',
+			url: '/todo/delete',
+			data: {
+				id: id,
+			},
+		})
+			.then((res) => {
+				getTodos();
+				if (page > maxPages) setPage(maxPages);
+			})
+			.catch((err) => console.error);
+	};
+
 	const previousPage = function (event) {
 		event.preventDefault();
 		let pageToSwitch = page - 1;
@@ -111,7 +126,7 @@ const TodoPage = function (props) {
 										<button>{value.completed ? 'Uncomplete' : 'Complete'}</button>
 									</div>
 									<div>
-										<button>Delete</button>
+										<button onClick={todoDeleteCb.bind(null, value._id)}>Delete</button>
 									</div>
 								</div>
 							</li>
