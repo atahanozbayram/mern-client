@@ -2,7 +2,7 @@ import React, { Children, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from 'js-cookie';
 
-const PrivateRoute = function (props) {
+const CustomRoute = function (props) {
 	if (cookie.get('refreshToken') === undefined) {
 		return <Redirect to={{ pathname: '/login' }} />;
 	}
@@ -10,4 +10,4 @@ const PrivateRoute = function (props) {
 	return props.children;
 };
 
-export { PrivateRoute };
+export { CustomRoute };
