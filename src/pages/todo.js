@@ -75,6 +75,20 @@ const TodoPage = function (props) {
 			});
 	};
 
+	const todoToggleComplete = function (id) {
+		axiosInstance({
+			method: 'POST',
+			url: '/todo/toggleComplete',
+			data: {
+				id: id,
+			},
+		})
+			.then((res) => {
+				getTodos();
+			})
+			.catch((err) => console.error);
+	};
+
 	const todoDeleteCb = function (id) {
 		axiosInstance({
 			method: 'POST',
@@ -123,7 +137,9 @@ const TodoPage = function (props) {
 								<div>
 									<div>{value.text}</div>
 									<div>
-										<button>{value.completed ? 'Uncomplete' : 'Complete'}</button>
+										<button onClick={todoToggleComplete.bind(null, value._id)}>
+											{value.completed ? 'Uncomplete' : 'Complete'}
+										</button>
 									</div>
 									<div>
 										<button onClick={todoDeleteCb.bind(null, value._id)}>Delete</button>
