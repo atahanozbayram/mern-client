@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { PageHeader } from '@components/PageHeader';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 const LoginForm = function (props) {
 	const emailInput = useRef(null);
 	const passwordInput = useRef(null);
 	const [errorArr, setErrorArr] = useState([]);
+	const [redirect, setRedirect] = useState(false);
 
 	const loginRequestFunc = function (event) {
 		event.preventDefault();
@@ -31,12 +33,16 @@ const LoginForm = function (props) {
 			.then((res) => {
 				// set errorArr to empty array
 				setErrorArr([]);
+				setRedirect(true);
 			})
 			.catch((err) => {
 				console.log('err.response: %o', err.response.data);
 				setErrorArr(err.response.data.errors);
+				setRedirect(false);
 			});
 	};
+
+	if (redirect) return <Redirect to={{ pathname: '/todo' }} />;
 
 	return (
 		<div>
