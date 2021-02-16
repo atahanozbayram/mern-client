@@ -9,14 +9,16 @@ const App = function () {
 		<Router>
 			<Switch>
 				<Route path="/login">
-					<LoginPage />
+					<CustomRoute routeType="public" redirectPath="/todo">
+						<LoginPage />
+					</CustomRoute>
 				</Route>
 				<Route path="/register"></Route>
-				<CustomRoute>
-					<Route path="/todo">
+				<Route path="/todo">
+					<CustomRoute routeType="private" redirectPath="/login">
 						<TodoPage />
-					</Route>
-				</CustomRoute>
+					</CustomRoute>
+				</Route>
 				<Route path="/"></Route>
 			</Switch>
 		</Router>
