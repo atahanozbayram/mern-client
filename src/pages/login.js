@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { PageHeader } from '@components/PageHeader';
-import axios from 'axios';
 import { Redirect } from 'react-router';
-import { axiosInstance } from '@utils/axios-instance';
+import { logIn } from '@utils/log-status';
+import { useHistory } from 'react-router-dom';
 
 const LoginForm = function (props) {
+	let history = useHistory();
 	const emailInput = useRef(null);
 	const passwordInput = useRef(null);
 	const [errorArr, setErrorArr] = useState([]);
@@ -17,35 +18,16 @@ const LoginForm = function (props) {
 
 		if (emailInput === null || passwordInput === null) return;
 
-		axiosInstance({
-			method: 'POST',
-			url: '/user/login',
-			data: {
-				email: emailInput.current.value,
-				password: passwordInput.current.value,
-			},
-			maxRedirects: 0,
-		})
+		logIn(emailInput.current.value, passwordInput.current.value)
 			.then((res) => {
-				// set errorArr to empty array
-				console.log('res, data: %o', res.data); // TODO: delete logging
-				const { firstName, lastName, email } = res.data.user;
-
-				localStorage.setItem('firstName', firstName);
-				localStorage.setItem('lastName', lastName);
-				localStorage.setItem('email', email);
-
 				setErrorArr([]);
-				setRedirect(true);
+				history.push('/todo');
 			})
 			.catch((err) => {
-				console.log('err.response: %o', err.response.data);
+				console.log('err.response.data: %o', err.response.data);
 				setErrorArr(err.response.data.errors);
-				setRedirect(false);
 			});
 	};
-
-	if (redirect) return <Redirect to={{ pathname: '/todo' }} />;
 
 	return (
 		<div>
