@@ -28,6 +28,13 @@ const LoginForm = function (props) {
 		})
 			.then((res) => {
 				// set errorArr to empty array
+				console.log('res, data: %o', res.data); // TODO: delete logging
+				const { firstName, lastName, email } = res.data.user;
+
+				localStorage.setItem('firstName', firstName);
+				localStorage.setItem('lastName', lastName);
+				localStorage.setItem('email', email);
+
 				setErrorArr([]);
 				setRedirect(true);
 			})
