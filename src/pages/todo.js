@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createRef } from 'react';
 import { PageHeader } from '@components/PageHeader';
 import axios from 'axios';
+import { axiosInstance } from '@utils/axios-instance';
 
 const TodoPage = function (props) {
 	const [loading, setLoading] = useState(true);
@@ -10,13 +11,6 @@ const TodoPage = function (props) {
 	const [todoList, setTodoList] = useState([]);
 
 	const todoInputRef = createRef();
-
-	const host = process.env.BACKEND_HOST || 'http://localhost';
-	const port = process.env.BACKEND_PORT || 3000;
-	const axiosInstance = axios.create({
-		baseURL: `${host}:${port}/api`,
-		withCredentials: true,
-	});
 
 	const getTodos = function () {
 		let cancel;
