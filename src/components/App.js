@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { LoginPage } from '@pages/login';
+import { RegisterPage } from '@pages/register';
 import { TodoPage } from '@pages/todo';
 import { CustomRoute } from '@root/components/CustomRoute';
 
@@ -13,7 +14,11 @@ const App = function () {
 						<LoginPage />
 					</CustomRoute>
 				</Route>
-				<Route path="/register"></Route>
+				<Route path="/register">
+					<CustomRoute routeType="public" redirectPath="/todo">
+						<RegisterPage />
+					</CustomRoute>
+				</Route>
 				<Route path="/todo">
 					<CustomRoute routeType="private" redirectPath="/login">
 						<TodoPage />
