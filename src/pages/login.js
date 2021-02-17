@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { PageHeader } from '@components/PageHeader';
 import axios from 'axios';
 import { Redirect } from 'react-router';
+import { axiosInstance } from '@utils/axios-instance';
 
 const LoginForm = function (props) {
 	const emailInput = useRef(null);
@@ -16,18 +17,13 @@ const LoginForm = function (props) {
 
 		if (emailInput === null || passwordInput === null) return;
 
-		const host = process.env.BACKEND_HOST || 'http://localhost';
-		const port = process.env.BACKEND_PORT || 3000;
-
-		axios({
+		axiosInstance({
 			method: 'POST',
-			baseURL: `${host}:${port}/api`,
 			url: '/user/login',
 			data: {
 				email: emailInput.current.value,
 				password: passwordInput.current.value,
 			},
-			withCredentials: true,
 			maxRedirects: 0,
 		})
 			.then((res) => {
