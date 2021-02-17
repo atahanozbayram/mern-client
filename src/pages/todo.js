@@ -2,8 +2,11 @@ import React, { useState, useEffect, createRef } from 'react';
 import { PageHeader } from '@components/PageHeader';
 import axios from 'axios';
 import { axiosInstance } from '@utils/axios-instance';
+import { logOut } from '@utils/log-status';
+import { useHistory } from 'react-router-dom';
 
 const TodoPage = function (props) {
+	let history = useHistory();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 	const [page, setPage] = useState(0);
@@ -42,6 +45,12 @@ const TodoPage = function (props) {
 		const cancel = getTodos();
 		return cancel;
 	}, [page]);
+
+	const logOutCb = function (event) {
+		event.preventDefault();
+		logOut();
+		history.push('/login');
+	};
 
 	const todoAddCb = function (event) {
 		// check if ref is null if so return immidiately
@@ -113,8 +122,18 @@ const TodoPage = function (props) {
 		setPage(pageToSwitch);
 	};
 
+	const firstName = localStorage.getItem('firstName');
+	const lastName = localStorage.getItem('lastName');
+	const email = localStorage.getItem('email');
+
 	return (
 		<div>
+			<div>
+				<div>{`${firstName} ${lastName}`}</div>
+				<div>
+					<button onClick={logOutCb}>log out</button>
+				</div>
+			</div>
 			<PageHeader title="TodoList" />
 			<div>
 				<form>
