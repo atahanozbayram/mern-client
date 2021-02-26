@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { PageHeader } from '@components/PageHeader';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { axiosInstance } from '@utils/axios-instance';
 
 const RegisterPage = function (props) {
+	const history = useHistory();
 	const [formInfo, setFormInfo] = useState({});
-	const [redirect, setRedirect] = useState(false);
 	const [errorArr, setErrorArray] = useState([]);
 
 	const handleChange = function (event) {
@@ -45,11 +45,10 @@ const RegisterPage = function (props) {
 			data: formInfo,
 		})
 			.then((res) => {
-				setRedirect(true);
+				history.push('/login');
 			})
 			.catch((err) => {
 				console.error(err);
-				setRedirect(false);
 				setErrorArray(err.response.data.errors);
 			});
 	};
