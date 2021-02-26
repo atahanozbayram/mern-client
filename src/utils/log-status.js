@@ -40,6 +40,7 @@ const logOut = function () {
 	localStorage.removeItem('email');
 
 	// clean up the refreshToken cookie
+	jscookie.remove('accessToken');
 	jscookie.remove('refreshToken');
 };
 
