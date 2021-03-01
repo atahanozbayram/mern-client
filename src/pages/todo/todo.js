@@ -4,6 +4,7 @@ import axios from 'axios';
 import { axiosInstance } from '@utils/axios-instance';
 import { logOut } from '@utils/log-status';
 import { useHistory } from 'react-router-dom';
+import styles from './todo.module.css';
 
 const TodoPage = function (props) {
 	let history = useHistory();
@@ -135,11 +136,13 @@ const TodoPage = function (props) {
 				</div>
 			</div>
 			<PageHeader title="TodoList" />
-			<div>
+			<div className={styles['todoAdd']}>
 				<form>
-					<label></label>
-					<input type="text" autoComplete="off" ref={todoInputRef} />
-					<button onClick={todoAddCb}>Add</button>
+					<div>
+						<label>Todo: </label>
+						<input type="text" autoComplete="off" ref={todoInputRef} />
+						<button onClick={todoAddCb}>Add</button>
+					</div>
 				</form>
 			</div>
 			<div>
@@ -147,15 +150,18 @@ const TodoPage = function (props) {
 					{todoList.map((value) => {
 						return (
 							<li key={value._id}>
-								<div>
-									<div>{value.text}</div>
+								<div className={styles['todo']}>
 									<div>
-										<button onClick={todoToggleComplete.bind(null, value._id)}>
+										<div className={styles['text']}>{value.text}</div>
+										<button
+											onClick={todoToggleComplete.bind(null, value._id)}
+											className={value.completed ? styles['buttonCompleted'] : styles['buttonUncompleted']}
+										>
 											{value.completed ? 'Uncomplete' : 'Complete'}
 										</button>
-									</div>
-									<div>
-										<button onClick={todoDeleteCb.bind(null, value._id)}>Delete</button>
+										<button onClick={todoDeleteCb.bind(null, value._id)} className={styles['delete']}>
+											Delete
+										</button>
 									</div>
 								</div>
 							</li>
