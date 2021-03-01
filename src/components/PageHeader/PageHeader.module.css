@@ -1,0 +1,15 @@
+.PageHeader {
+	height: 125px;
+	width: 100%;
+	background-color: #ef6351;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+	font-size: 40px;
+	overflow: auto;
+	position: relative;
+}
+
+.PageHeader > h2 {
+	text-align: center;
+	line-height: 125px;
+}
