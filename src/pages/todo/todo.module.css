@@ -1,0 +1,100 @@
+.todoAdd {
+	position: relative;
+	width: 100%;
+	height: 60px;
+	background-color: #fbc3bc;
+	display: table;
+}
+
+.todoAdd form {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.todoAdd form div {
+	margin: auto 20px;
+	width: calc(100% - 40px);
+	display: grid;
+	grid-template-columns: 300px 1fr 300px;
+	gap: 20px;
+}
+
+.todoAdd form div label {
+	text-align: center;
+	color: #fff;
+	line-height: 40px;
+	font-size: 40px;
+}
+
+.todoAdd form div input[type='text'] {
+	border: none;
+	height: 40px;
+	font-size: 20px;
+	padding-left: 5px;
+}
+
+.todoAdd form div button {
+	border: none;
+	background-color: #f38375;
+	color: #fff;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+.todo {
+	width: 100%;
+	background-color: #ffe3e0;
+	height: 40px;
+}
+
+.todo div {
+	display: grid;
+	grid-template-columns: 1fr max(300px) max(300px);
+	gap: 20px;
+	height: 40px;
+	width: calc(100% - 40px);
+	margin: 0 auto;
+	margin-top: 5px;
+}
+
+.todo div button {
+	height: 40px;
+}
+
+.todo div div {
+	padding: 5px;
+	font-size: 25px;
+}
+
+.todo div .delete {
+	border: none;
+	background-color: #f38375;
+	color: #fff;
+	cursor: pointer;
+}
+
+.buttonCompleted {
+	border: none;
+	background-color: #000;
+	color: #fff;
+}
+
+.buttonUncompleted {
+	border: none;
+	background-color: #f38375;
+	color: #fff;
+}
+
+@media screen and (max-width: 960px) {
+	.todoAdd form div {
+		margin: auto 20px;
+		width: calc(100% - 40px);
+		display: grid;
+		grid-template-columns: 100px 1fr 100px;
+		gap: 20px;
+	}
+
+	.todo div {
+		grid-template-columns: 1fr 100px 100px;
+	}
+}
