@@ -23,6 +23,7 @@ const logIn = function (email, password) {
 				console.log('logIn axios then'); // TODO: delete this logging
 				const { firstName, lastName, email } = res.data.user;
 
+				jscookie.set('refreshToken', res.data.refreshToken);
 				localStorage.setItem('firstName', firstName);
 				localStorage.setItem('lastName', lastName);
 				localStorage.setItem('email', email);
