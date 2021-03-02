@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const host = process.env.BACKEND_HOST || 'http://localhost';
-const port = process.env.BACKEND_PORT || 3000;
+const backend_url = process.env.BACKEND_HOST || 'http://localhost:3000';
 
 const axiosInstance = axios.create({
-	baseURL: `${host}:${port}/api`,
+	baseURL: `${backend_url}/api`,
 	withCredentials: true,
 });
 
