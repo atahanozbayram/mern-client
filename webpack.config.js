@@ -4,9 +4,7 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const port = process.env.PORT || 1234;
 
-module.exports = {
-	entry: path.resolve(__dirname, 'test/index.js'),
-	mode: 'development',
+const commonConfig = {
 	output: {
 		charset: true,
 		filename: 'bundle.js',
@@ -62,16 +60,24 @@ module.exports = {
 		},
 	},
 	optimization: {},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new Dotenv({
-			systemvars: true,
-		}),
-	],
-	devServer: {
-		contentBase: path.resolve(__dirname, 'public/'),
-		publicPath: '/assets/',
-		port: port,
-		hotOnly: true,
-	},
+	plugins: [],
 };
+
+const production = commonConfig;
+production.name = 'production';
+production.entry = path.resolve(__dirname, 'src/index.js');
+production.mode = 'production';
+
+const development = commonConfig;
+development.name = 'development';
+development.entry = path.resolve(__dirname, 'test/index.js');
+development.mode = 'development';
+development.plugins = [new webpack.HotModuleReplacementPlugin(), new Dotenv({ systemvars: true })];
+development.devServer = {
+	contentBase: path.resolve(__dirname, 'public/'),
+	publicPath: '/assets/',
+	port: port,
+	hotOnly: true,
+};
+
+module.exports = [production, development];
