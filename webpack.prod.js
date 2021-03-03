@@ -10,7 +10,13 @@ const prodConfig = merge(commonConfig, {
 	name: 'prod',
 	entry: '/src/index.js',
 	mode: 'production',
-	plugins: [],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './public/index.html',
+			filename: path.resolve(__dirname, 'dist/index.html'),
+			inject: 'body',
+		}),
+	],
 });
 
 module.exports = prodConfig;
