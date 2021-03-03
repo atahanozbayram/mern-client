@@ -11,11 +11,7 @@ const devConfig = merge(commonConfig, {
 	name: 'dev',
 	entry: '/test/index.js',
 	mode: 'development',
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new Dotenv({ systemvars: true }),
-		new HtmlWebpackPlugin({ template: './public/index.html' }),
-	],
+	plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv({ systemvars: true })],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist/'),
 		publicPath: '/',
