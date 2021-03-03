@@ -13,6 +13,7 @@ const prodConfig = merge(commonConfig, {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './public/index.html',
+			filename: path.resolve(__dirname, 'dist/index.html'),
 			inject: 'body',
 		}),
 	],
