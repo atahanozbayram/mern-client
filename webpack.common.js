@@ -3,12 +3,13 @@ const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const port = process.env.PORT || 1234;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonConfig = {
 	output: {
 		charset: true,
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, 'dist/assets'),
 		publicPath: 'assets',
 	},
 	module: {
