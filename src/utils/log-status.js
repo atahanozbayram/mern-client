@@ -24,6 +24,7 @@ const logIn = function (email, password) {
 				const { firstName, lastName, email } = res.data.user;
 
 				jscookie.set('refreshToken', res.data.refreshToken);
+				console.log('refreshToken: %o', jscookie.get('refreshToken')); // TODO: delete logging
 				localStorage.setItem('firstName', firstName);
 				localStorage.setItem('lastName', lastName);
 				localStorage.setItem('email', email);
